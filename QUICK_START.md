@@ -8,7 +8,7 @@
 1. Enable **ShaderBridge** in **Edit -> Plugins** (`PythonScriptPlugin` is enabled automatically) and restart Unreal Editor if prompted.
 2. Click the **ShaderBridge** button in the top Level Editor toolbar.
 3. In the **ShaderBridge** panel, pick any of the **5 built-in original CC0 samples** from the **Built-in Sample** dropdown and click **Load Sample** (this automatically fills **Shader Code** and **Material Name**).
-4. Optionally adjust **Output Folder** (default `/Game/ShadertoyMaterials`) and click **Convert To UE Material**.
+4. Optionally adjust **Output Folder** (default `/Game/ShaderBridgeMaterials`) and click **Convert To UE Material**.
 5. Your compiled native Material `.uasset` is saved, automatically highlighted in the **Content Browser**, and ready to apply to any mesh, UI widget, or post-process workflow.
 
 ---
@@ -31,9 +31,9 @@
   | `scifi_holo_grid` | Sci-Fi Holo Grid | `M_Showcase_ScifiHoloGrid` | `iTime`, `iResolution` |
   | `textured_uv_flow` | Textured UV Flow | `M_Showcase_TexturedUvFlow` | `iTime`, `iResolution`, `iChannel0` |
 - **Material Name**: Name of the generated Unreal Material asset (e.g., `M_MyPlasma`).
-- **Output Folder**: Target Content Browser folder (default `/Game/ShadertoyMaterials`).
+- **Output Folder**: Target Content Browser folder (default `/Game/ShaderBridgeMaterials`).
 - **Shader Code**: Paste any single-pass Shadertoy-compatible GLSL defining `void mainImage(out vec4 fragColor, in vec2 fragCoord)`.
-- **Preview HLSL**: Converts GLSL to Unreal-ready Custom Node HLSL, copies it to your clipboard, and displays live status feedback in the panel without creating an asset.
+- **Copy HLSL**: Converts GLSL to Unreal-ready Custom Node HLSL, copies it to your clipboard, and displays live status feedback in the panel without creating an asset.
 - **Convert To UE Material**: Compiles GLSL offline, builds and saves the native Material asset, wires all detected uniforms (`iTime`, `iTimeDelta`, `iFrame`, `iFrameRate`, `iResolution`, `iMouse`, `iDate`, `iChannel0`–`iChannel3`, `UVs`) grouped under **`Shadertoy`**, and syncs the Content Browser to the new asset.
 - **Cancel**: Cancels an active background conversion job.
 
@@ -55,7 +55,7 @@ sample = sample_shaders.get_sample("plasma_nebula")
 shadertoy_converter.convert_shader(
     glsl_code=sample["glsl"],
     material_name=sample["material_name"],
-    output_folder="/Game/ShadertoyMaterials",
+    output_folder="/Game/ShaderBridgeMaterials",
 )
 ```
 
